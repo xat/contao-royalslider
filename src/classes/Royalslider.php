@@ -64,8 +64,9 @@ class Royalslider
         );
     }
 
-    // http://stackoverflow.com/a/9628276/1652642
     /**
+     * http://stackoverflow.com/a/9628276/1652642
+     *
      * @param $strPath
      * @param $val
      * @param $arrTarget

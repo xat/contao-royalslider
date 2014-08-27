@@ -19,8 +19,9 @@ class ContentRoyalsliderEnd extends \Contao\ContentElement
     {
         if (TL_MODE === 'BE')
         {
-            $this->strTemplate = 'be_wildcard';
-            $this->Template = new \BackendTemplate($this->strTemplate);
+            $this->Template = new \BackendTemplate('be_wildcard');
+            $this->Template->title = '### ROYALSLIDER END ###';
+            return;
         }
 
         $this->Template->content = \Sope\Royalslider::endSlider();

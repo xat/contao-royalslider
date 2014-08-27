@@ -19,12 +19,12 @@ class ContentRoyalsliderStart extends \Contao\ContentElement
     {
         if (TL_MODE === 'BE')
         {
-            $this->strTemplate = 'be_wildcard';
-            $this->Template = new \BackendTemplate($this->strTemplate);
+            $this->Template = new \BackendTemplate('be_wildcard');
+            $this->Template->title = '### ROYALSLIDER START ###';
             return;
         }
 
         $arrOptions = \Sope\Royalslider::recordToOptions($this);
-        $this->Template->content = \Sope\Royalslider::startSlider($arrOptions);
+        $this->Template->content = \Sope\Royalslider::startSlider($arrOptions, sprintf('royalslider_%s', $this->id));
     }
 }
