@@ -1,0 +1,30 @@
+<?php
+    if ($this->options['includeCSS']) {
+        $GLOBALS['TL_CSS']['royalslider'] = 'assets/jquery/royalslider/royalslider.css';
+    }
+
+    $GLOBALS['TL_JAVASCRIPT']['royalslider'] = 'assets/jquery/royalslider/jquery.royalslider.min.js';
+
+    if ($this->options['royalJqEasing']) {
+        $GLOBALS['TL_JAVASCRIPT']['jquery_easing'] = 'assets/jquery/royalslider/jquery.easing-1.3.js';
+    }
+
+    if (!empty($this->options['useSkin'])) {
+        $GLOBALS['TL_CSS']['royalslider_skin_' . $this->options['royalSkin']] = 'assets/jquery/royalslider/skins/' . $this->options['useSkin'] . '/rs-' . $this->options['useSkin'] . '.css';
+    }
+
+?>
+
+<script>
+(function($) {
+    $(function() {
+        if (!$.fn.royalSlider) {
+            return console.warn('please include the royalslider jQuery plugin');
+        }
+        $('#<?php echo $this->id; ?>').royalSlider(<?php echo json_encode($this->options); ?>);
+    });
+}(jQuery));
+</script>
+
+<div id="<?php echo $this->id; ?>" class="royalslider">
+    <div class="royalslider_sheet">
