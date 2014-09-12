@@ -26,5 +26,5 @@
 }(jQuery));
 </script>
 
-<div id="<?php echo $this->id; ?>" class="royalslider">
+<div id="<?php echo $this->id; ?>" class="royalSlider">
     <div class="royalslider_sheet">
