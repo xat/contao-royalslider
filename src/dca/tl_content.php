@@ -1,6 +1,6 @@
 <?php
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['royalsliderStart'] = '{type_legend},type;{basic_legend},royalCSS,royalSkin,royalJqEasing;royalAutoScaleSlider,royalAutoScaleSliderWidth,royalAutoScaleSliderHeight,royalImageScaleMode;royalImageAlignCenter,royalImageScalePadding,royalControlNavigation,royalArrowsNav,royalArrowsNavAutoHide,royalArrowsNavHideOnTouch,royalImgWidth,royalImgHeight,royalSlidesSpacing,royalStartSlideId,royalLoop,royalLoopRewind,royalRandomizeSlides,royalNumImagesToPreload,royalUsePreloader,royalSlidesOrientation,royalTransitionType,royalTransitionSpeed,royalEaseInOut,royalEaseOut,royalControlsInside,royalNavigateByClick,royalSliderDrag,royalSliderTouch,royalKeyboardNavEnabled,royalFadeinLoadedSlide,royalAllowCSS3,royalGlobalCaption,royalAddActiveClass,royalMinSlideOffset,royalAutoHeight,royalSlides;{thumbs_legend:hide},royalThumbTouch,royalThumbOrientation,royalThumbArrows,royalThumbSpacing,royalThumbArrowsAutoHide,royalThumbAutoCenter,royalThumbTransitionSpeed,royalThumbFitInViewport,royalThumbFirstMargin,royalThumbArrowLeft,royalThumbArrowRight,royalThumbAppendSpan;{fullscreen_legend:hide},royalFullscreenEnabled,royalFullscreenKeyboardNav,royalFullscreenButtonFS,royalFullscreenNativeFS;{deeplinking_legend:hide},royalDeepEnabled,royalDeepChange,royalDeepPrefix;{autoplay_legend:hide},royalAutoplayEnabled,royalAutoplayStopAtAction,royalAutoplayPauseOnHover,royalAutoplayDelay;{video_legend:hide},royalVideoAutoHideArrows,royalVideoAutoHideControlNav,royalVideoAutoHideBlocks,royalVideoYouTubeCode,royalVideoVimeoCode;{block_legend:hide},royalBlockFadeEffect,royalBlockMoveEffect,royalBlockMoveOffset,royalBlockSpeed,royalBlockEasing,royalBlockDelay;{visiblenearby_legend:hide},royalVisibleEnabled,royalVisibleCenterArea,royalVisibleCenter,royalVisibleNavigateByCenterClick,royalVisibleBreakpoint,royalVisibleBreakpointCenterArea;{template_legend:hide},customTpl;{protected_legend:hide}';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['royalsliderStart'] = '{type_legend},type;{basic_legend},royalCSS,royalSkin,royalJqEasing;royalAutoScaleSlider,royalAutoScaleSliderWidth,royalAutoScaleSliderHeight,royalImageScaleMode;royalImageAlignCenter,royalImageScalePadding,royalControlNavigation,royalArrowsNav,royalArrowsNavAutoHide,royalArrowsNavHideOnTouch,royalImgWidth,royalImgHeight,royalSlidesSpacing,royalStartSlideId,royalLoop,royalLoopRewind,royalRandomizeSlides,royalNumImagesToPreload,royalUsePreloader,royalSlidesOrientation,royalTransitionType,royalTransitionSpeed,royalEaseInOut,royalEaseOut,royalControlsInside,royalNavigateByClick,royalSliderDrag,royalSliderTouch,royalKeyboardNavEnabled,royalFadeinLoadedSlide,royalAllowCSS3,royalGlobalCaption,royalAddActiveClass,royalMinSlideOffset,royalAutoHeight,royalSlides;{thumbs_legend:hide},royalThumbTouch,royalThumbOrientation,royalThumbArrows,royalThumbSpacing,royalThumbArrowsAutoHide,royalThumbAutoCenter,royalThumbTransitionSpeed,royalThumbFitInViewport,royalThumbFirstMargin,royalThumbArrowLeft,royalThumbArrowRight,royalThumbAppendSpan;{fullscreen_legend:hide},royalFullscreenEnabled,royalFullscreenKeyboardNav,royalFullscreenButtonFS,royalFullscreenNativeFS;{deeplinking_legend:hide},royalDeepEnabled,royalDeepChange,royalDeepPrefix;{autoplay_legend:hide},royalAutoplayEnabled,royalAutoplayStopAtAction,royalAutoplayPauseOnHover,royalAutoplayDelay;{video_legend:hide},royalVideoAutoHideArrows,royalVideoAutoHideControlNav,royalVideoAutoHideBlocks,royalVideoYouTubeCode,royalVideoVimeoCode;{block_legend:hide},royalBlockFadeEffect,royalBlockMoveEffect,royalBlockMoveOffset,royalBlockSpeed,royalBlockEasing,royalBlockDelay;{visiblenearby_legend:hide},royalVisibleEnabled,royalVisibleCenterArea,royalVisibleCenter,royalVisibleNavigateByCenterClick,royalVisibleBreakpoint,royalVisibleBreakpointCenterArea;royalAdditionalOptions;{template_legend:hide},customTpl;{protected_legend:hide}';
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['royalCSS'] = array
 (
@@ -889,4 +889,40 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['royalVisibleBreakpointCenterArea'] =
     'sql'                     => "varchar(64) NOT NULL default '0.8'",
     'property'                => 'visibleNearby.breakpointCenterArea',
     'propertyType'            => 'number'
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['royalAdditionalOptions'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_content']['royalAdditionalOptions'],
+    'exclude'                 => true,
+    'inputType'               => 'multiColumnWizard',
+    'sql'                     => "mediumtext NULL",
+    'eval'                    => array
+    (
+        'columnFields' => array
+        (
+            'option_key' => array
+            (
+                'label'                 => &$GLOBALS['TL_LANG']['tl_content']['option_key'],
+                'exclude'               => true,
+                'inputType'             => 'text',
+                'eval'                  => array('style'=>'width:150px'),
+            ),
+            'option_value' => array
+            (
+                'label'                 => &$GLOBALS['TL_LANG']['tl_content']['option_value'],
+                'exclude'               => true,
+                'inputType'             => 'text',
+                'eval'                  => array('style'=>'width:150px'),
+            ),
+            'option_type' => array
+            (
+                'label'                 => &$GLOBALS['TL_LANG']['tl_content']['option_type'],
+                'exclude'               => true,
+                'inputType'             => 'select',
+                'options'               => array('number', 'boolean', 'string'),
+                'eval'                  => array('style'=>'width:150px'),
+            ),
+        )
+    )
 );

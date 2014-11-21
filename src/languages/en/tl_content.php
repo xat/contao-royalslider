@@ -249,3 +249,5 @@ $GLOBALS['TL_LANG']['tl_content']['royalVisibleBreakpoint'][1] = 'Used for respo
 
 $GLOBALS['TL_LANG']['tl_content']['royalVisibleBreakpointCenterArea'][0] = 'breakpointCenterArea';
 $GLOBALS['TL_LANG']['tl_content']['royalVisibleBreakpointCenterArea'][1] = 'Same as centerArea option, just for breakpoint. Can be changed dynamically via `sliderInstance.st.breakpointCenterArea`.';
+
+$GLOBALS['TL_LANG']['tl_content']['royalAdditionalOptions'][0] = 'Additional Options';

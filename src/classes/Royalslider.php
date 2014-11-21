@@ -16,6 +16,9 @@ class Royalslider
      */
     public static function recordToOptions($objRecord, $strTable = 'tl_content', $arrHandlers = null)
     {
+        $loader = new \DcaLoader($strTable);
+        $loader->load();
+
         $arrFields = $GLOBALS['TL_DCA'][$strTable]['fields'];
         if (!isset($arrHandlers))
         {
@@ -23,16 +26,31 @@ class Royalslider
         }
 
         $arrFields = array_filter($arrFields, function($arrField) {
-            return isset($arrField['property']);
+            return isset($arrField['property']) || $arrField['inputType'] === 'multiColumnWizard';
         });
 
         $arrOptions = array();
 
         foreach ($arrFields as $strField => $arrField)
         {
-            // convert the values into something JSON friendly
-            $val = $arrHandlers[$arrField['propertyType']]($objRecord->$strField);
-            self::setValueFromPath($arrField['property'], $val, $arrOptions);
+            if ($strField === 'royalAdditionalOptions')
+            {
+                $arrAdditional = deserialize($objRecord->$strField);
+                if (empty($arrAdditional)) continue;
+
+                foreach($arrAdditional as $arrAdditionalOption)
+                {
+                    $val = $arrHandlers[$arrAdditionalOption['option_type']]($arrAdditionalOption['option_value']);
+                    if (empty($val)) continue;
+                    self::setValueFromPath($arrAdditionalOption['option_key'], $val, $arrOptions);
+                }
+
+            } else
+            {
+                // convert the values into something JSON friendly
+                $val = $arrHandlers[$arrField['propertyType']]($objRecord->$strField);
+                self::setValueFromPath($arrField['property'], $val, $arrOptions);
+            }
         }
 
         return $arrOptions;
