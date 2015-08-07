@@ -45,7 +45,7 @@ class Royalslider
                     self::setValueFromPath($arrAdditionalOption['option_key'], $val, $arrOptions);
                 }
 
-            } else
+            } elseif (!empty($arrField['propertyType']))
             {
                 // convert the values into something JSON friendly
                 $val = $arrHandlers[$arrField['propertyType']]($objRecord->$strField);
